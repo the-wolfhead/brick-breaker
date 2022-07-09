@@ -6,6 +6,7 @@ package First;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import java.awt.event.KeyListener;
@@ -100,6 +101,23 @@ public class GamePlan extends JPanel implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         timer.start();
+        //Ball Pedal Interaction
+        if(play) {
+            if(new Rectangle(ballposX, ballposY, 20, 30).intersects(new Rectangle(playerX, 550, 100, 8)));
+            
+            ballposX += ballXdir;
+            ballposY += ballYdir;
+            if (ballposX <0) {
+                ballXdir = -ballXdir;
+            }
+            if (ballposY <0) {
+                ballYdir = -ballYdir;
+            }
+            if (ballposX >670) {
+                ballXdir = -ballXdir;
+            }
+        }
+        
         repaint();
     }
     
