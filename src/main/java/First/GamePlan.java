@@ -6,6 +6,7 @@ package First;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
@@ -34,7 +35,10 @@ public class GamePlan extends JPanel implements KeyListener, ActionListener {
     private int ballXdir = -1;
     private int ballYdir = -2;
     
+    private MapGenerator map;
+    
     public GamePlan() {
+        map = new MapGenerator(3,7);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -46,6 +50,8 @@ public class GamePlan extends JPanel implements KeyListener, ActionListener {
         
         g.setColor(Color.white);
         g.fillRect(1, 1, 692, 592);
+        
+        map.draw((Graphics2D)g);
         
         g.setColor(Color.yellow);
         g.fillRect(0, 0, 3, 592);
